@@ -1,16 +1,13 @@
-import {signOut} from "@/auth"
-import {Button} from "@/components/ui/button";
-import {FaSignOutAlt} from "react-icons/fa";
+import { Button } from '@/components/ui/button';
+import { FaSignOutAlt } from 'react-icons/fa';
+import { handleSignOut } from '../lib/server-actions';
 
 export function SignOut() {
-    return (
-        <form
-            action={async () => {
-                "use server"
-                await signOut()
-            }}
-        >
-            <Button className={''} type="submit"><FaSignOutAlt />  Sign Out</Button>
-        </form>
-    )
+  return (
+    <form action={handleSignOut}>
+      <Button className={''} type="submit">
+        <FaSignOutAlt /> Sign Out
+      </Button>
+    </form>
+  );
 }

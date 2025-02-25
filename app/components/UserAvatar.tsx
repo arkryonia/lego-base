@@ -1,18 +1,29 @@
-import {auth} from "@/auth"
-import Image from "next/image";
+import { auth } from '@/auth';
+import Image from 'next/image';
 
-export default async function UserAvatar() {
-    const session = await auth()
+interface UserAvatarProps {
+  className?: string;
+  dim: number;
+}
 
-    if (!session?.user) return null
+export default async function UserAvatar({ className, dim }: UserAvatarProps) {
+  const session = await auth();
 
-    if (!session.user.image) return null
+  if (!session?.user) return null;
 
-    console.log(session.user.image)
+  if (!session.user.image) return null;
 
-    return (
-        <div>
-            <Image width={50} height={50} src={session.user.image} alt="User Avatar"/>
-        </div>
-    )
+  console.log(session.user.image);
+
+  return (
+    <div>
+      <Image
+        className={className}
+        width={dim}
+        height={dim}
+        src={session.user.image}
+        alt="User Avatar"
+      />
+    </div>
+  );
 }
