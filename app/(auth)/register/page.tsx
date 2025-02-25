@@ -10,7 +10,7 @@ import {signIn} from "@/auth";
 const Register = () => {
     const handleSignInWithGoogle = async () => {
         'use server';
-        await signIn("google")
+        await signIn("google", {redirectTo: '/admin'})
     }
     return (
         <div className={'flex min-h-screen justify-center items-center'}>
